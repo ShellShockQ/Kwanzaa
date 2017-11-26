@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Kwanzaa</string>
+    <string name="app_name">KWANZAA</string>
+    <string name="SwahiliDayOne">Umoja</string>
+    <string name="EnglishDayOne">Unity</string>
 </resources>
