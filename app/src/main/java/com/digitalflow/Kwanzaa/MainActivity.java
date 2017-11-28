@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.digitalflow.Kwanzaa360.R;
+
 import org.joda.time.LocalDate;
 
 import java.util.Calendar;

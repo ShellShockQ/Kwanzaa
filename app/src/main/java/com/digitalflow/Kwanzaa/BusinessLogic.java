@@ -65,7 +65,7 @@ public class BusinessLogic {
     }
 
     public Boolean isAKWANZAAday(String sDateEntered) {
-        List<String> KwanzaaDates = Arrays.asList("12/16", "12/27", "12/28", "12/29", "12/30", "12/31", "1/1");
+        List<String> KwanzaaDates = Arrays.asList("12/26", "12/27", "12/28", "12/29", "12/30", "12/31", "1/1");
         return KwanzaaDates.contains(sDateEntered);
     }
 
@@ -90,9 +90,13 @@ public class BusinessLogic {
         LocalDate Date1 = new LocalDate(workingDate);
         LocalDate Date2 = new LocalDate(FirstDayOfKwanzaa);
         int days = Days.daysBetween(Date1, Date2).getDays();
+        if (days > 358) {
+            days = 0;
+        }
         if (days < 0) {
             days = 365 + days;
         }
+
         return days;
     }
 }

@@ -253,5 +253,15 @@ public class BusinessLogicTests {
 
     }
 
+    @Test
+    public void When_DateIs_1_2_DaysUntilKwanzaaReturns() {
+        //Assign
+        String sDateEntered = "1/2";
+        //Act
+        int daysUntilKwanzaa = logic.daysUntilKwanzaa(sDateEntered);
+        //Assert
+        Assert.assertEquals(358, daysUntilKwanzaa);
+
+    }
 
 }

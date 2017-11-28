@@ -6,18 +6,20 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.digitalflow.Kwanzaa360.R;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.digitalflow.testhelpers.EspressoTestsMatchers.hasDrawable;
 import static com.digitalflow.testhelpers.EspressoTestsMatchers.withDrawable;
 import static org.junit.Assert.assertEquals;
-
 /**
  * Instrumentation test, which will execute on an Android device.
  *
@@ -91,6 +93,13 @@ public class MainActivityTest {
             }
         });
         onView(withId(R.id.daysUntilText)).check(matches(withText("25")));
+    }
+
+    @Test
+    public void When_UserSwipes_MainActivityTheyGet_TheOverViewActivity() {
+        final MainActivity activityUnderTest = mActivityRule.getActivity();
+        onView(withId(R.id.activity_main))
+                .perform(swipeRight());
     }
 
 }
