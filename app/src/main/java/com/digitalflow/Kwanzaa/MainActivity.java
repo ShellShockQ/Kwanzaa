@@ -1,8 +1,11 @@
 package com.digitalflow.Kwanzaa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String sTodaysDate = getDateAsAString();
         DisplayAppropriateImageBasedOnDate(sTodaysDate);
+        ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
+        LearnMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewPagerIntent = new Intent(MainActivity.this, KwanzaaViewPager.class);
+                startActivity(viewPagerIntent);
+            }
+        });
     }
 
     @NonNull
@@ -38,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void DisplayAppropriateImageBasedOnDate(String sDateEntered) {
-        ImageView img = (ImageView) findViewById(R.id.imgCandles);
+        ImageView img = findViewById(R.id.imgCandles);
         int dImage = R.drawable.dayuntil;
         if (mBusinessLogic.isAKWANZAAday(sDateEntered)) {
             if (sDateEntered.equals("12/26")) {
                 dImage = R.drawable.kwanzaa_day_01;
             }
         } else {
-            TextView tvDaysUntil = (TextView) findViewById(R.id.daysUntilText);
+            TextView tvDaysUntil = findViewById(R.id.daysUntilText);
             int daysToGo = mBusinessLogic.daysUntilKwanzaa(sDateEntered);
             tvDaysUntil.setText(Integer.toString(daysToGo));
         }
