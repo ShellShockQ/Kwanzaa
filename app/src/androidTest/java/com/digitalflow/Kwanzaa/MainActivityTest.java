@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -100,6 +101,14 @@ public class MainActivityTest {
         final MainActivity activityUnderTest = mActivityRule.getActivity();
         onView(withId(R.id.activity_main))
                 .perform(swipeRight());
+    }
+
+    @Test
+    public void When_LearnMoreButtonIsClickedGoToTheViewPager() {
+        final MainActivity activityUnderTest = mActivityRule.getActivity();
+        onView(withId(R.id.LearnMoreButton)).perform(click());
+        intended(hasComponent(KwanzaaViewPager.class.getName()));
+
     }
 
 }
