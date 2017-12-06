@@ -3,4 +3,8 @@
     <string name="SwahiliDayOne">Umoja</string>
     <string name="EnglishDayOne">Unity</string>
     <string name="title_activity_kwanzaa_overview">kwanzaa_overview</string>
+    <string name="FirstDateOfKwanzaa">12/26</string>
+    <string name="FirstDayofKwanzaaInSwahili">Umoja</string>
+    <string name="title_activity_kwanzaa_view_pager">KwanzaaViewPager</string>
+    <string name="title_activity_viewpager_item">viewpager_item</string>
 </resources>

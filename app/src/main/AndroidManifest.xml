@@ -20,9 +20,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.digitalflow.Kwanzaa.kwanzaaOverview"
-            android:label="@string/title_activity_kwanzaa_overview"
+            android:name="com.digitalflow.Kwanzaa.KwanzaaViewPager"
+            android:label="@string/title_activity_kwanzaa_view_pager"
             android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
     </application>
 

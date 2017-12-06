@@ -72,4 +72,17 @@
         app:layout_constraintRight_toRightOf="@+id/imgCandles"
         app:layout_constraintTop_toTopOf="@+id/imgCandles"/>
 
+    <ImageButton
+        android:id="@+id/LearnMoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/learnmoreaboutkwanzaa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/learnmoreaboutkwanzaa"/>
+
 </android.support.constraint.ConstraintLayout>
