@@ -15,8 +15,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="0dp"
         android:adjustViewBounds="true"
+        android:contentDescription="TODO"
         android:scaleType="fitCenter"
-        android:src="@drawable/kwanzaa_day_01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:text="rightbhere"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/african"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="40sp"
@@ -46,7 +46,6 @@
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Placeholder Text"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
@@ -59,10 +58,10 @@
         android:id="@+id/viewPagerTextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="2dp"
-        android:text="Placeholder Text"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="15sp"
@@ -70,5 +69,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPagerTextItemSwahili"/>
 
+    <ImageView
+        android:id="@+id/imageviewbreadcrumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_horizontal"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

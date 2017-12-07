@@ -47,15 +47,14 @@ public class CustomPagerAdapter extends PagerAdapter {
         TextView tvEnglish = Itemview.findViewById(R.id.viewPagerTextItemEnglish);
         TextView tvSwahili = Itemview.findViewById(R.id.viewPagerTextItemSwahili);
         TextView tvDescription = Itemview.findViewById(R.id.viewPagerTextDescription);
-
         ImageView imageView = Itemview.findViewById(R.id.viewPagerImageItem);
-
+        ImageView ivBreadCrumb = Itemview.findViewById(R.id.imageviewbreadcrumb);
         KwanzaaDay kwanzaaDay = listofkwanzaadays.get(position);
         tvEnglish.setText(kwanzaaDay.EnglishName);
         tvSwahili.setText(kwanzaaDay.SwahiliName);
         tvDescription.setText(kwanzaaDay.ShortExplanation);
         imageView.setImageResource(kwanzaaDay.ImageId);
-
+        ivBreadCrumb.setImageResource(kwanzaaDay.BreadCrumb);
         container.addView(Itemview);
         return Itemview;
 
