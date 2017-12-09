@@ -1,4 +1,4 @@
-package com.digitalflow.Kwanzaa;
+package com.digitalflow.Kwanzaa.adapter;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.digitalflow.Kwanzaa.KwanzaaDay;
 import com.digitalflow.Kwanzaa360.R;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CustomPagerAdapter extends PagerAdapter {
     private List<KwanzaaDay> listofkwanzaadays;
     private LayoutInflater mLayoutInflater;
 
-    CustomPagerAdapter(Context context, List<KwanzaaDay> listofkwanzaadays) {
+    public CustomPagerAdapter(Context context, List<KwanzaaDay> listofkwanzaadays) {
         this.context = context;
         this.listofkwanzaadays = listofkwanzaadays;
         this.mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

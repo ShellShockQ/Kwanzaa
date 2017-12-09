@@ -13,17 +13,22 @@
             android:name="com.digitalflow.Kwanzaa.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.digitalflow.Kwanzaa.KwanzaaViewPager"
+            android:label="@string/title_activity_kwanzaa_view_pager"
+            android:theme="@style/Kwanzaa">
+        </activity>
+        <activity
+            android:name="com.digitalflow.Kwanzaa.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Kwanzaa"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.digitalflow.Kwanzaa.KwanzaaViewPager"
-            android:label="@string/title_activity_kwanzaa_view_pager"
-            android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
     </application>
 

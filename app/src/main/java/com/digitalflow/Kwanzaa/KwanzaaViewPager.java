@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.digitalflow.Kwanzaa.adapter.CustomPagerAdapter;
 import com.digitalflow.Kwanzaa360.R;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class KwanzaaViewPager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kwanzaa_view_pager);
         List<KwanzaaDay> kwanzaaDayList = GetListOfKwanzaaDays();
-        ViewPager viewPager = (ViewPager) findViewById(R.id.ViewPager);
+        ViewPager viewPager = findViewById(R.id.ViewPager);
         CustomPagerAdapter customPagerAdapter = new CustomPagerAdapter(this, kwanzaaDayList);
         viewPager.setAdapter(customPagerAdapter);
 

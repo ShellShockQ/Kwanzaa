@@ -9,4 +9,13 @@
     <string name="title_activity_viewpager_item">viewpager_item</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="title_activity_main2">Kwanzaa 360</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="days_until_kwanzaa">Days Until Kwanzaa</string>
+    <string name="learn_more_about_kwanzaa">Learn More About Kwanzaa</string>
+    <string name="_365">365</string>
 </resources>

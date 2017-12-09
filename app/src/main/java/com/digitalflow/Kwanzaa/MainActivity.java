@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,13 +18,19 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     final public BusinessLogic mBusinessLogic = new BusinessLogic();
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String sTodaysDate = getDateAsAString();
         DisplayAppropriateImageBasedOnDate(sTodaysDate);
+        SetupLearnMoreButton();
+        setupToolbar();
+        setupDrawer();
+    }
+
+    private void SetupLearnMoreButton() {
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
         LearnMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(viewPagerIntent);
             }
         });
+    }
+
+    private void setupToolbar() {
+        toolbar = findViewById(R.id.toolbar2);
+        toolbar.setTitle(R.string.app_name);
+        //   toolbar.inflateMenu(R.menu.menu_main);
+    }
+
+    private void setupDrawer() {
+//    NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.nav_drwr_fragment);
+//        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+//        drawerFragment.setUpDrawer(R.id.nav_drwr_fragment, drawerLayout,toolbar);
     }
 
     @NonNull
