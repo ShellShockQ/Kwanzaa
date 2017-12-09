@@ -7,4 +7,6 @@
     <string name="FirstDayofKwanzaaInSwahili">Umoja</string>
     <string name="title_activity_kwanzaa_view_pager">KwanzaaViewPager</string>
     <string name="title_activity_viewpager_item">viewpager_item</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>

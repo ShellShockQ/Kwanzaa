@@ -16,6 +16,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -110,6 +111,14 @@ public class MainActivityTest {
         final MainActivity activityUnderTest = mActivityRule.getActivity();
         onView(withId(R.id.LearnMoreButton)).perform(click());
         intended(hasComponent(KwanzaaViewPager.class.getName()));
+
+    }
+
+    @Test
+    public void When_MenuIsClickedAMenuNavigationDrawerIsShown() {
+        final MainActivity activityUnderTest = mActivityRule.getActivity();
+        onView(withId(R.id.navigationdrawermenu)).perform(click());
+        onView(withId(R.id.navigationdrawer_layout)).check(matches(isOpen()));
 
     }
 

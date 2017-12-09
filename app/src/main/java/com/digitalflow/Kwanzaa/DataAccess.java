@@ -29,4 +29,13 @@ public class DataAccess {
         kwanzaaDaysList.add(DaySeven);
         return kwanzaaDaysList;
     }
+
+    public static List<NavigationDrawerItem> getMenuItems() {
+        List<NavigationDrawerItem> MenuItemList = new ArrayList<NavigationDrawerItem>();
+        NavigationDrawerItem item1 = new NavigationDrawerItem("YesI Celebrate Kwanzaa",
+                R.drawable.dayuntil);
+        MenuItemList.add(item1);
+        return MenuItemList;
+    }
+
 }
