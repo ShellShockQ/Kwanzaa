@@ -29,8 +29,10 @@ public class Main2Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_top);
+        TextView mTitle = toolbar.findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
         String sTodaysDate = getDateAsAString();
         DisplayAppropriateImageBasedOnDate(sTodaysDate);
         SetupLearnMoreButton();
@@ -44,7 +46,6 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
     private void SetupLearnMoreButton() {
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
         LearnMoreButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +56,6 @@ public class Main2Activity extends AppCompatActivity
             }
         });
     }
-
     public void DisplayAppropriateImageBasedOnDate(String sDateEntered) {
         ImageView img = findViewById(R.id.imgCandles);
         int dImage = R.drawable.dayuntil;
@@ -71,7 +71,6 @@ public class Main2Activity extends AppCompatActivity
         img.setImageResource(dImage);
 
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -110,17 +109,17 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_ICelebrate) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_suppliers) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_events) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_trivia) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_ecard) {
+
+        } else if (id == R.id.nav_cashmob) {
 
         }
 
@@ -128,7 +127,6 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     private String getDateAsAString() {
         String sTodaysDate;
         LocalDate today = LocalDate.now();

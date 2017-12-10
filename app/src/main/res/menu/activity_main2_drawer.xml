@@ -5,33 +5,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import"/>
+            android:id="@+id/nav_ICelebrate"
+            android:icon="@drawable/ic_menu_celebrate"
+            android:title="Yes, I Celebrate Kwanzaa"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_suppliers"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:title="Suppliers"/>
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_events"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
+            android:title="Events in My Area"/>
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_trivia"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
+            android:title="Trivia"/>
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_ecard"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share"/>
+                android:title="Send An E-Card"/>
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_cashmob"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send"/>
+                android:title="Cash Mobs"/>
         </menu>
     </item>
 
