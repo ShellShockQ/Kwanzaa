@@ -14,9 +14,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -99,12 +97,6 @@ public class MainActivityTest {
         onView(withId(R.id.daysUntilText)).check(matches(withText("25")));
     }
 
-    @Test
-    public void When_UserSwipes_MainActivityTheyGet_TheOverViewActivity() {
-        final MainActivity activityUnderTest = mActivityRule.getActivity();
-        onView(withId(R.id.activity_main))
-                .perform(swipeRight());
-    }
 
     @Test
     public void When_LearnMoreButtonIsClickedGoToTheViewPager() {
@@ -114,12 +106,6 @@ public class MainActivityTest {
 
     }
 
-    @Test
-    public void When_MenuIsClickedAMenuNavigationDrawerIsShown() {
-        final MainActivity activityUnderTest = mActivityRule.getActivity();
-        onView(withId(R.id.navigationdrawermenu)).perform(click());
-        onView(withId(R.id.navigationdrawer_layout)).check(matches(isOpen()));
 
-    }
 
 }

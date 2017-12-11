@@ -1,89 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/woodgrain"
-    tools:context="com.digitalflow.Kwanzaa.MainActivity">
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-7dp"
-        android:background="#d7000000"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"/>
-
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/content_day_one"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintTop_creator="1"/>
+        layout="@layout/app_bar_main2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-    <ImageView
-        android:id="@+id/imgCandles"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/include"
-        app:layout_constraintLeft_toLeftOf="@+id/include"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.497"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main2"
+        app:menu="@menu/activity_main2_drawer"/>
 
-    <TextView
-        android:id="@+id/daysUntilText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp"
-        android:elevation="3dp"
-        android:paddingBottom="15dp"
-        android:textColor="#ffffff"
-        android:textSize="32sp"
-        android:visibility="visible"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintLeft_toLeftOf="@+id/imgCandles"
-        app:layout_constraintRight_toRightOf="@+id/imgCandles"
-        app:layout_constraintTop_toTopOf="@+id/imgCandles"/>
-
-    <ImageButton
-        android:id="@+id/LearnMoreButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@null"
-        android:src="@drawable/learnmoreaboutkwanzaa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/learnmoreaboutkwanzaa"/>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>
