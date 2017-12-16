@@ -19,4 +19,5 @@
     <string name="_365">365</string>
     <string name="toolbartitle">Detrick</string>
     <string name="title_activity_icelebrate_kwanzaa">Yes I Celebrate Kwanzaa</string>
+    <string name="icelebrate_explanation">TextView</string>
 </resources>

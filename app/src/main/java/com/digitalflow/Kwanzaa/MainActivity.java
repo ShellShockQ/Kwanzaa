@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_ICelebrate) {
+            Intent iCelebrateIntent = new Intent(MainActivity.this, ICelebrateKwanzaa.class);
+            startActivity(iCelebrateIntent);
 
         } else if (id == R.id.nav_suppliers) {
 

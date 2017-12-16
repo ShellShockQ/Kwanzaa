@@ -9,4 +9,20 @@
     tools:context="com.digitalflow.Kwanzaa.ICelebrateKwanzaa"
     tools:showIn="@layout/activity_icelebrate_kwanzaa">
 
+
+    <TextView
+        android:id="@+id/tvIcelebrate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="top"
+        android:text="@string/icelebrate_explanation"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </android.support.constraint.ConstraintLayout>

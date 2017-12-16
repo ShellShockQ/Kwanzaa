@@ -264,4 +264,15 @@ public class BusinessLogicTests {
 
     }
 
+    @Test
+    public void WhenStringAddressIsGivenToGetCityFromLocationStringTheColonyReturned() {
+        //Arrange
+        String theLocation = "Address[addressLines=[0:\"5613 Overland Dr, The Colony, TX 75056, USA\"],feature=5613,admin=Texas,sub-admin=Denton County,locality=The Colony,thoroughfare=Overland Drive,postalCode=75056,countryCode=US,countryName=United States,hasLatitude=true,latitude=33.0910765,hasLongitude=true,longitude=-96.8697442,phone=null,url=null,extras=null]";
+        //Act
+        //  String theCity = getCityFromLocationString(theLocation);
+        //Assert
+
+
+    }
+
 }

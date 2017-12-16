@@ -11,4 +11,7 @@ public class icelebrate {
         return theCity;
     }
 
+    public static int GetCelebatorCountInCity() {
+        return 0;
+    }
 }
