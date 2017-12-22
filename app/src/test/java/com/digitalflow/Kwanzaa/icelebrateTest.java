@@ -30,8 +30,9 @@ public class icelebrateTest {
         String myCity = "The North Pole";
         double lon = 90;
         double lat = 0;
+        String zipCode = "75056";
         //Act
-        int resultCount = GetCelebatorCountInCity();
+        int resultCount = GetCelebatorCountInCity(zipCode);
 
         //Assert
         Assert.assertEquals(0, resultCount);

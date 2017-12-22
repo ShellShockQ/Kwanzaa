@@ -19,5 +19,17 @@
     <string name="_365">365</string>
     <string name="toolbartitle">Detrick</string>
     <string name="title_activity_icelebrate_kwanzaa">Yes I Celebrate Kwanzaa</string>
-    <string name="icelebrate_explanation">TextView</string>
+    <string name="icelebrate_explanation"></string>
+    <string name="title_activity_kwanzaa_activities">Kwanzaa Activities</string>
+    <string name="kwanzaaActivitiesText">
+         <![CDATA[
+        <p><strong>Umoja</strong> (Unity):<br/>-Write and sing a song about the unity in school community.</p>
+<p><strong>Kujichagulia</strong> (Self-determination):<br/>-Write books or read stories about determined people who achieved great goals.</p>
+<p><strong>Ujima</strong> (Collective Work & Responsibility):<br/>-Make posters encouraging responsible behavior in the community. Plan a community service day for school.</p>
+<p><strong>Ujamaa</strong>(Cooperative Economics):<br/>-Start a small business with your group in School. Work together to raise money. Use profits for the common good.</p>
+<p><strong>Nia</strong> (Purpose):<br/>-Find and bring videos or story books to school. Choose stories where characters show strength of purpose. Discuss the videos or stories.</p>
+<p><strong>Kuumba</strong> (Creativity):<br/>-Open an art gallery.</p>
+<p><strong>Imani</strong> (Faith):<br/>-Have children of different faiths describe their beliefs. Invite clergy or other religious people to school.</p>
+]]>
+</string>
 </resources>

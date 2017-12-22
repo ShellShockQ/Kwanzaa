@@ -9,29 +9,36 @@
             android:icon="@drawable/ic_menu_celebrate"
             android:title="Yes, I Celebrate Kwanzaa"/>
         <item
-            android:id="@+id/nav_suppliers"
+            android:id="@+id/nav_activities"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Suppliers"/>
+            android:title="Activities"
+            android:visible="true"/>
         <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Events in My Area"/>
+            android:title="Events in My Area"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_trivia"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Trivia"/>
+            android:title="Trivia"
+            android:visible="false"/>
     </group>
 
-    <item android:title="Communicate">
+    <item
+        android:title="Communicate"
+        android:visible="false">
         <menu>
             <item
                 android:id="@+id/nav_ecard"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Send An E-Card"/>
+                android:title="Send An E-Card"
+                android:visible="false"/>
             <item
                 android:id="@+id/nav_cashmob"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Cash Mobs"/>
+                android:title="Cash Mobs"
+                android:visible="false"/>
         </menu>
     </item>
 

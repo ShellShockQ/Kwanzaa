@@ -34,6 +34,16 @@ public class ICelebrateKwanzaa extends AppCompatActivity
     protected boolean mHaveLocPerm;
     protected Location mLastLocation;
 
+    public static int updateICelebrateCounter() {
+        String PREFS_NAME = "LocalSharedPreferences";
+        String PREFS_KEY = "ICelebrateCount";
+        int Mode = 0;
+        int resultingInteger = DataAccess.GetICelebrateCountFromSharedPreferences(PREFS_NAME, PREFS_KEY, Mode);
+        ++resultingInteger;
+        DataAccess.WriteIntToSharedPreferences(PREFS_NAME, PREFS_KEY, Mode, resultingInteger);
+        return resultingInteger;
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -42,13 +52,11 @@ public class ICelebrateKwanzaa extends AppCompatActivity
         updateUI();
     }
 
-
     @Override
     protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
     }
-
 
     @Override
     protected void onResume() {
@@ -70,12 +78,14 @@ public class ICelebrateKwanzaa extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mAddressReceiver = new AddressReceiver(new Handler());
-        FloatingActionButton fab = findViewById(R.id.fab);
+        final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "We are counting you!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                updateICelebrateCounter();
+                fab.setVisibility(View.GONE);
             }
         });
 
@@ -109,9 +119,12 @@ public class ICelebrateKwanzaa extends AppCompatActivity
 
     protected void updateUI() {
         Log.i(TAG, "updateUI");
+        String PREFS_NAME = "LocalSharedPreferences";
+        String PREFS_KEY = "ICelebrateCount";
+        int Mode = 0;
         if (mAddress != null) {
             String city = mAddress.getString("city") + "," + mAddress.getString("state");
-            int count = 0;
+            int count = DataAccess.GetICelebrateCountFromSharedPreferences(PREFS_NAME, PREFS_KEY, Mode);
             getAddressFromLoc();
             TextView textView = findViewById(R.id.tvIcelebrate);
             textView.setText(String.format("There are %01d people in %s that have said Yes, I'm celebrate Kwanzaa this year. Click the Add button below to be counted.", count, city));

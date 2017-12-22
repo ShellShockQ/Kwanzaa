@@ -5,6 +5,7 @@ import com.digitalflow.Kwanzaa360.R;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by Detrick on 11/29/2017.
  */
 public class DataAccessTest {
+
     @Test
     public void WhenCalledReturnTheDaysofKwanzaaImageEnglishSwahiliAndMeaning() {
         //Assign
@@ -36,4 +38,27 @@ public class DataAccessTest {
         //Assert
         Assert.assertEquals(kwanzaaDaysList.get(0).theDate, returnedKwanzaaDaysList.get(0).theDate);
     }
+
+    @Test
+    public void WhenSampleDataICelebrateCountIsCalled12IsReturned() {
+        //Assign
+        int ExpectedCount = 12;
+        //Act
+        int ResultingCount = DataAccess.GetSampleDataICelebrateCount();
+        //Assert
+        Assert.assertEquals(ExpectedCount, ResultingCount);
+    }
+
+    @Test
+    public void WhenGetICelebrateCountIsCalled12IsReturnedWhenAPIAvailableIsFalse() {
+        //Assign
+        int ExpectedCount = 12;
+        Connection connection = null;
+        //Act
+        int ResultingCount = DataAccess.ICelebrateCount(connection);
+        //Assert
+        Assert.assertEquals(ExpectedCount, ResultingCount);
+    }
+
+
 }

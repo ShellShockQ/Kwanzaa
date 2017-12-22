@@ -111,8 +111,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_ICelebrate) {
             Intent iCelebrateIntent = new Intent(MainActivity.this, ICelebrateKwanzaa.class);
             startActivity(iCelebrateIntent);
-
-        } else if (id == R.id.nav_suppliers) {
+        } else if (id == R.id.nav_activities) {
+            Intent KwanzaaActivities = new Intent(MainActivity.this, KwanzaaActivities.class);
+            startActivity(KwanzaaActivities);
 
         } else if (id == R.id.nav_events) {
 

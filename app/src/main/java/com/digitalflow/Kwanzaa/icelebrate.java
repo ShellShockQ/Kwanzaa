@@ -11,7 +11,8 @@ public class icelebrate {
         return theCity;
     }
 
-    public static int GetCelebatorCountInCity() {
+    public static int GetCelebatorCountInCity(String Zip) {
+
         return 0;
     }
 }

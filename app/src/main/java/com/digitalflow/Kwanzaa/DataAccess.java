@@ -1,7 +1,11 @@
 package com.digitalflow.Kwanzaa;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+
 import com.digitalflow.Kwanzaa360.R;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,8 @@ import java.util.List;
  * Created by Detrick on 11/29/2017.
  */
 
-public class DataAccess {
+public class DataAccess extends Activity {
+
 
     public static List<KwanzaaDay> GetListOfKwanzaaDays() {
         List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
@@ -38,4 +43,51 @@ public class DataAccess {
         return MenuItemList;
     }
 
+    public static int GetSampleDataICelebrateCount() {
+        return 12;
+    }
+
+    public static int ICelebrateCount(Connection connection) {
+        int count = GetSampleDataICelebrateCount();
+        if (connection != null) count = GetICelebrateCountFromAPI();
+
+        return count;
+    }
+
+    private static int GetICelebrateCountFromAPI() {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+
+    public static void WriteStringToSharedPreferences(String PREFS_NAME, String prefs_key, int Mode, String sValue) {
+        SharedPreferences preferences = Kwanzaa360.getAppContext().getSharedPreferences(PREFS_NAME, Mode);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(prefs_key, sValue);
+        editor.commit();
+    }
+
+    public static void WriteIntToSharedPreferences(String PREFS_NAME, String prefs_key, int Mode, int sValue) {
+        SharedPreferences preferences = Kwanzaa360.getAppContext().getSharedPreferences(PREFS_NAME, Mode);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(prefs_key, sValue);
+        editor.commit();
+    }
+
+    public static String GetStringFromSharedPreferences(String PREFS_NAME, String PREFS_KEY, int Mode) {
+        SharedPreferences preferences = Kwanzaa360.getAppContext().getSharedPreferences(PREFS_NAME, Mode);
+        return preferences.getString(PREFS_KEY, "");
+
+    }
+
+    public static int GetIntFromSharedPreferences(String prefs_name, String PREFS_KEY, int mode) {
+        SharedPreferences preferences = Kwanzaa360.getAppContext().getSharedPreferences(prefs_name, mode);
+        return preferences.getInt(PREFS_KEY, 0);
+
+    }
+
+    public static int GetICelebrateCountFromSharedPreferences(String prefs_name, String prefs_key, int mode) {
+        SharedPreferences preferences = Kwanzaa360.getAppContext().getSharedPreferences(prefs_name, mode);
+        return preferences.getInt(prefs_key, 0);
+
+    }
 }
