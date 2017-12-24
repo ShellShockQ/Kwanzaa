@@ -17,6 +17,7 @@ public class DataAccessTest {
     @Test
     public void WhenCalledReturnTheDaysofKwanzaaImageEnglishSwahiliAndMeaning() {
         //Assign
+        String theDate = "";
         List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
         KwanzaaDay DayOne = new KwanzaaDay("12/26", "Umoja", "Unity", "To Strive for and maintain unity in the family, community, nation and race", R.drawable.kinaraday1, R.drawable.breadcrumb1226);
         KwanzaaDay DayTwo = new KwanzaaDay("12/27", "Kujichagulia", "Self-Determination", "To define ourselves, name ourselves, create for ourselves and speak for ourselves.", R.drawable.kinaraday2, R.drawable.breadcrumb1227);
@@ -34,11 +35,49 @@ public class DataAccessTest {
         kwanzaaDaysList.add(DaySeven);
 
         //Act
-        List<KwanzaaDay> returnedKwanzaaDaysList = DataAccess.GetListOfKwanzaaDays();
+        List<KwanzaaDay> returnedKwanzaaDaysList = DataAccess.GetListOfKwanzaaDays(theDate);
         //Assert
         Assert.assertEquals(kwanzaaDaysList.get(0).theDate, returnedKwanzaaDaysList.get(0).theDate);
     }
 
+    @Test
+    public void WhenDateIs12_26KwanzaaImageEnglishSwahiliAndMeaning() {
+        //Assign
+        String theDate = "12/26";
+        List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
+        KwanzaaDay DayOne = new KwanzaaDay("12/26", "Umoja", "Unity", "To Strive for and maintain unity in the family, community, nation and race", R.drawable.kinaraday1, R.drawable.breadcrumb1226);
+        kwanzaaDaysList.add(DayOne);
+        //Act
+        List<KwanzaaDay> returnedKwanzaaDaysList = DataAccess.GetListOfKwanzaaDays(theDate);
+        //Assert
+        Assert.assertEquals(kwanzaaDaysList.get(0).EnglishName, returnedKwanzaaDaysList.get(0).EnglishName);
+    }
+
+    @Test
+    public void WhenDateIs12_27KwanzaaImageEnglishSwahiliAndMeaning() {
+        //Assign
+        String theDate = "12/27";
+        List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
+        KwanzaaDay DayTwo = new KwanzaaDay("12/27", "Kujichagulia", "Self-Determination", "To define ourselves, name ourselves, create for ourselves and speak for ourselves.", R.drawable.kinaraday2, R.drawable.breadcrumb1227);
+        kwanzaaDaysList.add(DayTwo);
+        //Act
+        List<KwanzaaDay> returnedKwanzaaDaysList = DataAccess.GetListOfKwanzaaDays(theDate);
+        //Assert
+        Assert.assertEquals(kwanzaaDaysList.get(0).EnglishName, returnedKwanzaaDaysList.get(0).EnglishName);
+    }
+
+    @Test
+    public void WhenDateIs1_1KwanzaaImageEnglishSwahiliAndMeaning() {
+        //Assign
+        String theDate = "1/1";
+        List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
+        KwanzaaDay DaySeven = new KwanzaaDay("1/1", "Imani", "Faith", "To believe with all our heart in our people, our parents, our teachers, our leaders and the righteousness and victory of our struggle", R.drawable.kinaraday7, R.drawable.breadcrumb0101);
+        kwanzaaDaysList.add(DaySeven);
+        //Act
+        List<KwanzaaDay> returnedKwanzaaDaysList = DataAccess.GetListOfKwanzaaDays(theDate);
+        //Assert
+        Assert.assertEquals(kwanzaaDaysList.get(0).EnglishName, returnedKwanzaaDaysList.get(0).EnglishName);
+    }
     @Test
     public void WhenSampleDataICelebrateCountIsCalled12IsReturned() {
         //Assign

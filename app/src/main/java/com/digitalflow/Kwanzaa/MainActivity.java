@@ -57,13 +57,15 @@ public class MainActivity extends AppCompatActivity
     }
     public void DisplayAppropriateImageBasedOnDate(String sDateEntered) {
         ImageView img = findViewById(R.id.imgCandles);
+        ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
+        TextView tvDaysUntil = findViewById(R.id.daysUntilText);
+
         int dImage = R.drawable.dayuntil;
         if (mBusinessLogic.isAKWANZAAday(sDateEntered)) {
-            if (sDateEntered.equals("12/26")) {
-                dImage = R.drawable.kwanzaa_day_01;
-            }
+            Intent viewPagerIntent = new Intent(MainActivity.this, KwanzaaViewPager.class);
+            viewPagerIntent.putExtra("thedate", sDateEntered);
+            startActivity(viewPagerIntent);
         } else {
-            TextView tvDaysUntil = findViewById(R.id.daysUntilText);
             int daysToGo = mBusinessLogic.daysUntilKwanzaa(sDateEntered);
             tvDaysUntil.setText(Integer.toString(daysToGo));
         }

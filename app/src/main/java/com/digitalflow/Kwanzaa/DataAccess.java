@@ -16,7 +16,7 @@ import java.util.List;
 public class DataAccess extends Activity {
 
 
-    public static List<KwanzaaDay> GetListOfKwanzaaDays() {
+    public static List<KwanzaaDay> GetListOfKwanzaaDays(String theDate) {
         List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
         KwanzaaDay DayOne = new KwanzaaDay("12/26", "Umoja", "Unity", "To Strive for and maintain unity in the family, community, nation and race", R.drawable.kinaraday1, R.drawable.breadcrumb1226);
         KwanzaaDay DayTwo = new KwanzaaDay("12/27", "Kujichagulia", "Self-Determination", "To define ourselves, name ourselves, create for ourselves and speak for ourselves.", R.drawable.kinaraday2, R.drawable.breadcrumb1227);
@@ -25,13 +25,38 @@ public class DataAccess extends Activity {
         KwanzaaDay DayFive = new KwanzaaDay("12/30", "Nia", "Purpose", "To make our collective vocation the building and developing of our community in order to restoreout people to their traditional greatness.", R.drawable.kinaraday5, R.drawable.breadcrumb1230);
         KwanzaaDay DaySix = new KwanzaaDay("12/31", "Kuumba", "Creativity", "To do always as much as we can, in the way we can, in order to leave our community more beautiful and beneficial than we inherited it", R.drawable.kinaraday6, R.drawable.breadcrumb1231);
         KwanzaaDay DaySeven = new KwanzaaDay("1/1", "Imani", "Faith", "To believe with all our heart in our people, our parents, our teachers, our leaders and the righteousness and victory of our struggle", R.drawable.kinaraday7, R.drawable.breadcrumb0101);
-        kwanzaaDaysList.add(DayOne);
-        kwanzaaDaysList.add(DayTwo);
-        kwanzaaDaysList.add(DayThree);
-        kwanzaaDaysList.add(DayFour);
-        kwanzaaDaysList.add(DayFive);
-        kwanzaaDaysList.add(DaySix);
-        kwanzaaDaysList.add(DaySeven);
+        switch (theDate) {
+            case "12/26":
+                kwanzaaDaysList.add(DayOne);
+                break;
+            case "12/27":
+                kwanzaaDaysList.add(DayTwo);
+                break;
+            case "12/28":
+                kwanzaaDaysList.add(DayThree);
+                break;
+            case "12/29":
+                kwanzaaDaysList.add(DayFour);
+                break;
+            case "12/30":
+                kwanzaaDaysList.add(DayFive);
+                break;
+            case "12/31":
+                kwanzaaDaysList.add(DaySix);
+                break;
+            case "1/1":
+                kwanzaaDaysList.add(DaySeven);
+                break;
+            default:
+                kwanzaaDaysList.add(DayOne);
+                kwanzaaDaysList.add(DayTwo);
+                kwanzaaDaysList.add(DayThree);
+                kwanzaaDaysList.add(DayFour);
+                kwanzaaDaysList.add(DayFive);
+                kwanzaaDaysList.add(DaySix);
+                kwanzaaDaysList.add(DaySeven);
+        }
+
         return kwanzaaDaysList;
     }
 

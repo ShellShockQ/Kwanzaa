@@ -1,5 +1,6 @@
 package com.digitalflow.Kwanzaa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,9 @@ public class KwanzaaViewPager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kwanzaa_view_pager);
-        List<KwanzaaDay> kwanzaaDayList = GetListOfKwanzaaDays();
+        Intent intent = getIntent();
+        String theDate = intent.getExtras().getString("thedate");
+        List<KwanzaaDay> kwanzaaDayList = GetListOfKwanzaaDays(theDate);
         ViewPager viewPager = findViewById(R.id.ViewPager);
         CustomPagerAdapter customPagerAdapter = new CustomPagerAdapter(this, kwanzaaDayList);
         viewPager.setAdapter(customPagerAdapter);
