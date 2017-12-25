@@ -1,5 +1,15 @@
 package com.digitalflow.Kwanzaa;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.support.v4.app.NotificationCompat;
+
+import com.digitalflow.Kwanzaa360.R;
+
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
@@ -10,8 +20,61 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static android.content.Context.ALARM_SERVICE;
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 public class BusinessLogic {
     private static BusinessLogic logic = new BusinessLogic();
+
+    public static int daysUntilKwanzaa(String sDateEntered) {
+        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy");
+        Calendar today = Calendar.getInstance();
+        Calendar workingDate = Calendar.getInstance();
+        int currYear = today.get(Calendar.YEAR);
+        String dateInString = "12/26/" + Integer.toString(currYear);
+        Date FirstDayOfKwanzaa = null;
+        Date enteredDate = null;
+        try {
+            FirstDayOfKwanzaa = formatter.parse(dateInString);
+            workingDate.setTime(formatter.parse(sDateEntered + "/" + Integer.toString(currYear)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        LocalDate Date1 = new LocalDate(workingDate);
+        LocalDate Date2 = new LocalDate(FirstDayOfKwanzaa);
+        int days = Days.daysBetween(Date1, Date2).getDays();
+        if (days > 358) {
+            days = 0;
+        }
+        if (days < 0) {
+            days = 365 + days;
+        }
+
+        return days;
+    }
+
+    public static String getDateAsAString() {
+        String sTodaysDate;
+        LocalDate today = LocalDate.now();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(today.toDate());
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        String sMonth = Integer.toString(month + 1);
+        String sDay = Integer.toString(day);
+        sTodaysDate = sMonth + "/" + sDay;
+        return sTodaysDate;
+    }
+
+    public static void setupAlarmManager() {
+        Calendar alarmTime = Calendar.getInstance();
+        alarmTime.set(Calendar.HOUR_OF_DAY, 5);
+        // alarmTime.set(Calendar.HOUR_OF_DAY,19);
+        //  alarmTime.set(Calendar.MINUTE,25);
+        AlarmManager alarmManager = (AlarmManager) Kwanzaa360.getAppContext().getSystemService(ALARM_SERVICE);
+        Intent intentAlarm = new Intent(Kwanzaa360.getAppContext(), NotificationReciever.class);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), PendingIntent.getBroadcast(Kwanzaa360.getAppContext(), 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    }
 
     protected String WhichDayOfKwanzaaIsItInSwahili(String sDateEntered) {
         String sKwanzaaDay = "";
@@ -69,36 +132,43 @@ public class BusinessLogic {
         return KwanzaaDates.contains(sDateEntered);
     }
 
-    protected int daysUntilKwanzaa(String sDateEntered) {
-        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy");
-        Calendar today = Calendar.getInstance();
-        Calendar workingDate = Calendar.getInstance();
-        int currYear = today.get(Calendar.YEAR);
-        String dateInString = "12/26/" + Integer.toString(currYear);
-        Date FirstDayOfKwanzaa = null;
-        Date enteredDate = null;
-        try {
-            FirstDayOfKwanzaa = formatter.parse(dateInString);
-            workingDate.setTime(formatter.parse(sDateEntered + "/" + Integer.toString(currYear)));
-            //    if(workingDate.before(today))
-            //    {
-            //    workingDate.add(Calendar.YEAR,1);
-            //    }
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public void KwanzaaNotify(String theDate) {
+        Intent workingIntent = null;
+        int daysToGo = BusinessLogic.daysUntilKwanzaa(theDate);
+        String title = "";
+        String text = "";
+        if (isAKWANZAAday(theDate)) {
+            List<KwanzaaDay> kwanzaaDay = DataAccess.GetListOfKwanzaaDays(theDate);
+            title = "Happy Kwanzaa";
+            text = String.format("%s(%s) - %s", kwanzaaDay.get(0).EnglishName, kwanzaaDay.get(0).SwahiliName, kwanzaaDay.get(0).ShortExplanation);
+            workingIntent = new Intent(Kwanzaa360.getAppContext(), KwanzaaViewPager.class);
+            workingIntent.setAction("KwanzaaNotifier");
+            workingIntent.putExtra("thedate", theDate);
+            Kwanzaa360.getAppContext().startActivity(workingIntent);
+        } else {
+            title = "Kwanzaa 360";
+            text = String.format("%01d days until Kwanzaa", daysToGo);
         }
-        LocalDate Date1 = new LocalDate(workingDate);
-        LocalDate Date2 = new LocalDate(FirstDayOfKwanzaa);
-        int days = Days.daysBetween(Date1, Date2).getDays();
-        if (days > 358) {
-            days = 0;
-        }
-        if (days < 0) {
-            days = 365 + days;
-        }
-
-        return days;
+        NotificationCompat.Builder builder = initBasicBuilder(title, text, workingIntent);
+        Notification notification = builder.build();
+        NotificationManager notificationManager = (NotificationManager) Kwanzaa360.getAppContext().getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(360, notification);
     }
 
+    public NotificationCompat.Builder initBasicBuilder(String title, String text, Intent intent) {
+        String channelId = "Kwanzaa360";
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(Kwanzaa360.getAppContext(), channelId);
+        builder.setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(Kwanzaa360.getAppContext().getResources(), R.drawable.kwanzaamenuheader))
+                .setContentTitle(title)
+                .setTicker("KWANZAA 360")
+                .setAutoCancel(true)
+                .setContentText(text);
+        if (intent != null) {
+            PendingIntent pendingIntent = PendingIntent.getActivity(Kwanzaa360.getAppContext(), 0, intent, 0);
+            builder.setContentIntent(pendingIntent);
+        }
+        return builder;
 
+    }
 }

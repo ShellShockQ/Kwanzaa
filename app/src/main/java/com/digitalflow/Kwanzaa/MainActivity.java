@@ -17,13 +17,14 @@ import android.widget.TextView;
 
 import com.digitalflow.Kwanzaa360.R;
 
-import org.joda.time.LocalDate;
-
-import java.util.Calendar;
+import static com.digitalflow.Kwanzaa.BusinessLogic.getDateAsAString;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    static final long ONE_MINUTE_IN_MILLIS = 60000;//millisecs
     final public BusinessLogic mBusinessLogic = new BusinessLogic();
+    final String sTodaysDate = getDateAsAString();
+    final BusinessLogic businessLogic = new BusinessLogic();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity
         TextView mTitle = toolbar.findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
-        String sTodaysDate = getDateAsAString();
         DisplayAppropriateImageBasedOnDate(sTodaysDate);
         SetupLearnMoreButton();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -44,7 +44,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        BusinessLogic.setupAlarmManager();
     }
+
+
     private void SetupLearnMoreButton() {
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
         LearnMoreButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
     public void DisplayAppropriateImageBasedOnDate(String sDateEntered) {
         ImageView img = findViewById(R.id.imgCandles);
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
@@ -66,7 +70,7 @@ public class MainActivity extends AppCompatActivity
             viewPagerIntent.putExtra("thedate", sDateEntered);
             startActivity(viewPagerIntent);
         } else {
-            int daysToGo = mBusinessLogic.daysUntilKwanzaa(sDateEntered);
+            int daysToGo = BusinessLogic.daysUntilKwanzaa(sDateEntered);
             tvDaysUntil.setText(Integer.toString(daysToGo));
         }
         img.setImageResource(dImage);
@@ -131,16 +135,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private String getDateAsAString() {
-        String sTodaysDate;
-        LocalDate today = LocalDate.now();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(today.toDate());
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        String sMonth = Integer.toString(month + 1);
-        String sDay = Integer.toString(day);
-        sTodaysDate = sMonth + "/" + sDay;
-        return sTodaysDate;
-    }
+
+
 }

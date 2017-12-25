@@ -19,7 +19,10 @@ public class KwanzaaViewPager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kwanzaa_view_pager);
         Intent intent = getIntent();
-        String theDate = intent.getExtras().getString("thedate");
+        String theDate = "";
+        if (intent.getExtras() != null) {
+            theDate = intent.getExtras().getString("thedate");
+        }
         List<KwanzaaDay> kwanzaaDayList = GetListOfKwanzaaDays(theDate);
         ViewPager viewPager = findViewById(R.id.ViewPager);
         CustomPagerAdapter customPagerAdapter = new CustomPagerAdapter(this, kwanzaaDayList);

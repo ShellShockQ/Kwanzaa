@@ -3,7 +3,7 @@
           package="com.digitalflow.Kwanzaa360">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <application
         android:name="com.digitalflow.Kwanzaa.Kwanzaa360"
         android:allowBackup="true"
@@ -41,6 +41,7 @@
             android:label="@string/title_activity_kwanzaa_activities"
             android:theme="@style/Kwanzaa">
         </activity>
+        <receiver android:name="com.digitalflow.Kwanzaa.NotificationReciever"/>
     </application>
 
 </manifest>

@@ -106,6 +106,16 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void When_DateIs12_26_NotificationAppears() {
+        final MainActivity activityUnderTest = mActivityRule.getActivity();
+        BusinessLogic businessLogic = new BusinessLogic();
+        String theDate = "12/26";
+        businessLogic.KwanzaaNotify(theDate);
+        onView(withId(R.id.LearnMoreButton)).perform(click());
+        intended(hasComponent(KwanzaaViewPager.class.getName()));
+
+    }
 
 
 }
