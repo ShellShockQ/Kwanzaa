@@ -9,11 +9,16 @@ import android.content.Intent;
  */
 
 public class NotificationReciever extends BroadcastReceiver {
-    final String theDate = BusinessLogic.getDateAsAString();
+    String theDate = "";
 
     @Override
     public void onReceive(Context context, Intent intent) {
         BusinessLogic businessLogic = new BusinessLogic();
-        businessLogic.KwanzaaNotify(theDate);
+        try {
+            theDate = BusinessLogic.getDateAsAString();
+            businessLogic.KwanzaaNotify(theDate);
+        } catch (Exception ex) {
+        }
+
     }
 }

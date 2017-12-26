@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import com.digitalflow.Kwanzaa360.R;
 
@@ -68,7 +69,7 @@ public class BusinessLogic {
 
     public static void setupAlarmManager() {
         Calendar alarmTime = Calendar.getInstance();
-        alarmTime.set(Calendar.HOUR_OF_DAY, 5);
+        alarmTime.set(Calendar.HOUR_OF_DAY, 7);
         // alarmTime.set(Calendar.HOUR_OF_DAY,19);
         //  alarmTime.set(Calendar.MINUTE,25);
         AlarmManager alarmManager = (AlarmManager) Kwanzaa360.getAppContext().getSystemService(ALARM_SERVICE);
@@ -133,6 +134,9 @@ public class BusinessLogic {
     }
 
     public void KwanzaaNotify(String theDate) {
+        if (theDate == "" || theDate == null) {
+            theDate = BusinessLogic.getDateAsAString();
+        }
         Intent workingIntent = null;
         int daysToGo = BusinessLogic.daysUntilKwanzaa(theDate);
         String title = "";
@@ -141,10 +145,16 @@ public class BusinessLogic {
             List<KwanzaaDay> kwanzaaDay = DataAccess.GetListOfKwanzaaDays(theDate);
             title = "Happy Kwanzaa";
             text = String.format("%s(%s) - %s", kwanzaaDay.get(0).EnglishName, kwanzaaDay.get(0).SwahiliName, kwanzaaDay.get(0).ShortExplanation);
-            workingIntent = new Intent(Kwanzaa360.getAppContext(), KwanzaaViewPager.class);
-            workingIntent.setAction("KwanzaaNotifier");
-            workingIntent.putExtra("thedate", theDate);
-            Kwanzaa360.getAppContext().startActivity(workingIntent);
+            try {
+                workingIntent = new Intent(Kwanzaa360.getAppContext(), KwanzaaViewPager.class);
+                workingIntent.setAction("KwanzaaNotifier");
+                workingIntent.putExtra("thedate", theDate);
+                Kwanzaa360.getAppContext().startActivity(workingIntent);
+            } catch (Exception ex) {
+
+                Toast.makeText(Kwanzaa360.getAppContext(), "We are experiencing an issue. We have been notified and we're correcting it. Thank you for your patience", Toast.LENGTH_LONG).show();
+            }
+
         } else {
             title = "Kwanzaa 360";
             text = String.format("%01d days until Kwanzaa", daysToGo);

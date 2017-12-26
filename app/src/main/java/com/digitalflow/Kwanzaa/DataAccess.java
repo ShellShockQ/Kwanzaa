@@ -17,6 +17,9 @@ public class DataAccess extends Activity {
 
 
     public static List<KwanzaaDay> GetListOfKwanzaaDays(String theDate) {
+        if (theDate == null) {
+            theDate = "";
+        }
         List<KwanzaaDay> kwanzaaDaysList = new ArrayList<KwanzaaDay>();
         KwanzaaDay DayOne = new KwanzaaDay("12/26", "Umoja", "Unity", "To Strive for and maintain unity in the family, community, nation and race", R.drawable.kinaraday1, R.drawable.breadcrumb1226);
         KwanzaaDay DayTwo = new KwanzaaDay("12/27", "Kujichagulia", "Self-Determination", "To define ourselves, name ourselves, create for ourselves and speak for ourselves.", R.drawable.kinaraday2, R.drawable.breadcrumb1227);

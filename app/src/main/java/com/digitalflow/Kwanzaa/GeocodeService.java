@@ -109,15 +109,23 @@ public class GeocodeService extends IntentService {
      */
     protected void deliverResult(int resultCode, Address address) {
         Bundle b = new Bundle();
-        // b.putString(Constants.ADDRESS_RESULT_KEY, result);
-        // b.putParcelable(Constants.ADDRESS_RESULT_KEY,result);
-        b.putDouble("latitude", address.getLatitude());
-        b.putDouble("longitude", address.getLongitude());
-        b.putString("city", address.getLocality());
-        b.putString("state", address.getAdminArea());
+        double latitude = 0;
+        double longitude = 0;
+        String theCity = "";
+        String theState = "";
+        if (address != null) {
+            latitude = address.getLatitude();
+            longitude = address.getLongitude();
+            theCity = address.getLocality();
+            theState = address.getAdminArea();
+        }
+        b.putDouble("latitude", latitude);
+        b.putDouble("longitude", longitude);
+        b.putString("city", theCity);
+        b.putString("state", theState);
 //        intent.putExtra("country",country);
 //        intent.putExtra("zip",postalCode);
-
         mReceiver.send(resultCode, b);
+
     }
 }
