@@ -5,6 +5,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
@@ -77,6 +79,24 @@ public class BusinessLogic {
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), PendingIntent.getBroadcast(Kwanzaa360.getAppContext(), 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
+    public static Boolean isAKWANZAAday(String sDateEntered) {
+        List<String> KwanzaaDates = Arrays.asList("12/26", "12/27", "12/28", "12/29", "12/30", "12/31", "1/1");
+        return KwanzaaDates.contains(sDateEntered);
+    }
+
+    public static String getVersionInfo() {
+        String versionName = "";
+        int versionCode = -1;
+        try {
+            PackageInfo packageInfo = Kwanzaa360.getAppContext().getPackageManager().getPackageInfo(Kwanzaa360.getAppContext().getPackageName(), 0);
+            versionName = packageInfo.versionName;
+            versionCode = packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return String.format("Version name = %s \nVersion code = %d", versionName, versionCode);
+    }
+
     protected String WhichDayOfKwanzaaIsItInSwahili(String sDateEntered) {
         String sKwanzaaDay = "";
         if (sDateEntered.equals("12/26")) {
@@ -126,11 +146,6 @@ public class BusinessLogic {
         }
 
         return sEnglishKwanzaaDay;
-    }
-
-    public Boolean isAKWANZAAday(String sDateEntered) {
-        List<String> KwanzaaDates = Arrays.asList("12/26", "12/27", "12/28", "12/29", "12/30", "12/31", "1/1");
-        return KwanzaaDates.contains(sDateEntered);
     }
 
     public void KwanzaaNotify(String theDate) {

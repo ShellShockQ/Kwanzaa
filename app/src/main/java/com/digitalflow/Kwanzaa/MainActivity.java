@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity
         BusinessLogic.setupAlarmManager();
     }
 
+    private void setVersionNumber() {
+        TextView tvVersion = findViewById(R.id.versionNumber);
+        tvVersion.setText(BusinessLogic.getVersionInfo());
+    }
+
 
     private void SetupLearnMoreButton() {
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
@@ -63,9 +68,10 @@ public class MainActivity extends AppCompatActivity
         ImageView img = findViewById(R.id.imgCandles);
         ImageButton LearnMoreButton = findViewById(R.id.LearnMoreButton);
         TextView tvDaysUntil = findViewById(R.id.daysUntilText);
-
         int dImage = R.drawable.dayuntil;
-        if (mBusinessLogic.isAKWANZAAday(sDateEntered)) {
+        if (BusinessLogic.isAKWANZAAday(sDateEntered)) {
+            tvDaysUntil.setVisibility(View.GONE);
+            dImage = R.drawable.kwanzaamenuheader;
             Intent viewPagerIntent = new Intent(MainActivity.this, KwanzaaViewPager.class);
             viewPagerIntent.putExtra("thedate", sDateEntered);
             startActivity(viewPagerIntent);
