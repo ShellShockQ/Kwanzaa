@@ -5,10 +5,10 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.digitalflow.Kwanzaa"
-        minSdkVersion 23
+        minSdkVersion 14
         targetSdkVersion 26
-        versionCode 11
-        versionName "5.3"
+        versionCode 12
+        versionName "5.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
