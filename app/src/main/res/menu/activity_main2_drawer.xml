@@ -23,6 +23,11 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Trivia"
             android:visible="false"/>
+        <item
+        android:id="@+id/nav_virtualtour"
+        android:icon="@drawable/ic_tour"
+        android:title="Virtual Tour"
+        android:visible="true"/>
     </group>
 
     <item
